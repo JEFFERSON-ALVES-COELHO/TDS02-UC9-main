@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Produtos</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <script src="../../js/config.js"></script>
+    <script src="../../js/produtos/form.js" defer></script>
+</head>
+<body>
+    <!-- Header -->
+     <header>
+        <h1>Controle de Estoque</h1>
+        <nav>
+            <a href="../../index.html">Home</a>
+            <a href="index.html">Produtos</a>
+        </nav>
+    </header>
+
+    <!-- Main -->
+    <main>
+        <h2>Novo Produto</h2>
+
+        <form id="form-produto">
+            <label for="">Nome do Produto</label>
+            <input type="text" id="nome" required>
+
+            <label for="">Preço:</label>
+            <input type="number" id="preco" min="0" step="0.01" required>
+
+            <label for="">Quantidade em Estoque</label>
+            <input type="number" id="quantidadeEstoque" min="0">
+
+            <label for="">ID do Fornecedor</label>
+            <input type="number" id="fornecedorId" placeholder="Selecione..." required>
+
+            <button type="submit">Salvar</button>
+            <a href="index.html" class="button" style="background-color: gray;">Cancelar</a>
+        </form>
+    </main>
+
+</body>
+</html>
