@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário de Fornecedor</title>
     <link rel="stylesheet" href="../../css/global.css">
-    <script src="../../js/fornecedores/form.js" defer></script>
     <script src="../../js/config.js"></script>
+    <script src="../../js/fornecedores/form.js" defer></script>
 </head>
 <body>
-    <!-- Header -->
-     <header>
+    <header>
         <h1>Controle de Estoque</h1>
         <nav>
             <a href="../../index.html">Home</a>
@@ -20,16 +19,16 @@
 
     <main>
         <h2 id="titulo-pagina">Novo Fornecedor</h2>
-
+        
         <form id="form-fornecedor">
-            <label for="nome">Razão Social:</label>
-            <input type="text" name="nome" id="nome">
+            <label for="nome">Razão Social (Nome):</label>
+            <input type="text" id="nome" required>
 
-            <label for="cpnj">CNPJ:</label>
-            <input type="text" name="cpnj" id="cpnj">
+            <label for="cnpj">CNPJ:</label>
+            <input type="text" id="cnpj" required>
 
             <button type="submit">Salvar</button>
-            <a href="index.html" class="button" style="background-color: gray;">Cancelar</a>
+            <a href="index.html" class="button" style="background-color: #6c757d;">Cancelar</a>
         </form>
     </main>
 </body>

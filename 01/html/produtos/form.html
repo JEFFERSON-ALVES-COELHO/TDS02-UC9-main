@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Produtos</title>
+    <title>Formulário de Produto</title>
     <link rel="stylesheet" href="../../css/global.css">
     <script src="../../js/config.js"></script>
     <script src="../../js/produtos/form.js" defer></script>
 </head>
 <body>
-    <!-- Header -->
-     <header>
+    <header>
         <h1>Controle de Estoque</h1>
         <nav>
             <a href="../../index.html">Home</a>
@@ -18,27 +17,25 @@
         </nav>
     </header>
 
-    <!-- Main -->
     <main>
         <h2 id="titulo-pagina">Novo Produto</h2>
-
+        
         <form id="form-produto">
-            <label for="">Nome do Produto</label>
+            <label for="nome">Nome do Produto:</label>
             <input type="text" id="nome" required>
 
-            <label for="">Preço:</label>
-            <input type="number" id="preco" min="0" step="0.01" required>
+            <label for="preco">Preço:</label>
+            <input type="number" id="preco" step="0.01" required>
 
-            <label for="">Quantidade em Estoque</label>
-            <input type="number" id="quantidadeEstoque" min="0">
+            <label for="quantidadeEstoque">Quantidade em Estoque:</label>
+            <input type="number" id="quantidadeEstoque" required>
 
-            <label for="">ID do Fornecedor</label>
-            <input type="number" id="fornecedorId" placeholder="Selecione..." required>
+            <label for="fornecedorId">ID do Fornecedor:</label>
+            <input type="number" id="fornecedorId" required>
 
             <button type="submit">Salvar</button>
-            <a href="index.html" class="button" style="background-color: gray;">Cancelar</a>
+            <a href="index.html" class="button" style="background-color: #6c757d;">Cancelar</a>
         </form>
     </main>
-
 </body>
 </html>

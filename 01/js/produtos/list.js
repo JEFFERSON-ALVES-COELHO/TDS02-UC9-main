@@ -1,10 +1,9 @@
 async function carregarProdutos() {
     try {
-        const resposnse = await fetch(`${API_BASE_URL}/produtos`);
-        const produtos = await resposnse.json();
-        console.log(produtos);
-
-        const tbody = document.getElementById("tabela-produtos");
+        const response = await fetch(`${API_BASE_URL}/Produtos`);
+        const produtos = await response.json();
+        
+        const tbody = document.getElementById('tabela-produtos');
         tbody.innerHTML = '';
 
         produtos.forEach(produto => {
@@ -12,20 +11,17 @@ async function carregarProdutos() {
             tr.innerHTML = `
                 <td>${produto.id}</td>
                 <td>${produto.nome}</td>
-                <td>${produto.preco}</td>
-                <td>${produto.quantidadeEstoque}</td>
-                <td>${produto.fornecedorId}</td>
-                <td>
-                    <a href="./detalhes.html?id=${produto.id}">Detalhes</a>
-                    <a href="./form.html?id=${produto.id}">Editar</a>
-                    <a href="./excluir.html?id=${produto.id}">Excluir</a>
+                <td>R$ ${produto.preco.toFixed(2)}</td>
+                <td class="actions">
+                    <a href="detalhes.html?id=${produto.id}">Detalhes</a>
+                    <a href="form.html?id=${produto.id}">Editar</a>
+                    <a href="excluir.html?id=${produto.id}" style="color: var(--danger-color);">Excluir</a>
                 </td>
-            `      
-            tbody.appendChild(tr)   
-        });        
-
+            `;
+            tbody.appendChild(tr);
+        });
     } catch (error) {
-        console.error("Erro ao carregar os produtos", error);
+        console.error("Erro ao carregar os produtos:", error);
     }
 }
 

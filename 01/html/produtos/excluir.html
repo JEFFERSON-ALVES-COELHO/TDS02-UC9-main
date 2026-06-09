@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +9,7 @@
     <script src="../../js/produtos/excluir.js" defer></script>
 </head>
 <body>
-    <!-- Header -->
-     <header>
+    <header>
         <h1>Controle de Estoque</h1>
         <nav>
             <a href="../../index.html">Home</a>
@@ -18,19 +17,14 @@
         </nav>
     </header>
 
-    <!-- Main -->
     <main>
-        <h2>Excluir Produto</h2>
+        <h2>Confirmar Exclusão</h2>
+        <p>Você tem certeza que deseja excluir o produto abaixo?</p>
+        
+        <div id="dados-produto" style="margin-bottom: 20px;"></div>
 
-        <p>Tem certeza que deseja excluir este produto?</p>
-
-        <div id="dados-produto" style="margin-bottom: 20px;">
-            <!-- preenchimento via JavaScript -->
-        </div>
-
-        <button class="button danger" id="btn-excluir">Sim, excluir</button>
-        <a href="index.html" class="button" style="background-color: gray;">Cancelar</a>
+        <button id="btn-excluir" class="button-danger">Sim, Excluir</button>
+        <a href="index.html" class="button" style="background-color: #6c757d;">Cancelar</a>
     </main>
-    
 </body>
 </html>
