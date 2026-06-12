@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const token = localStorage.getItem('token');
     const authSection = document.getElementById("auth-section");
     const mainContent = document.getElementById("main-content");
     const navMenu = document.getElementById("nav-menu");
     const btnLogout = document.getElementById("btn-logout");
 
-    if(false) {
+    if(token) {
         authSection.style.display = 'none';
         mainContent.style.display = 'block';
         navMenu.style.display = 'inline-block';
@@ -34,7 +35,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: JSON.stringify({email, senha})
                 });
 
-                console.log(await response.json());
+                   if(response.ok) {
+                    const data = await response.json();
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('usuario', JSON.stringify(data.usuario));
+                    window.location.reload();
+                } else {
+                    const errorData = await response.json();
+                    alert(errorData.message || 'Erro ao autenticar');
+                }
 
             } catch (err) {
                 console.log(err);
@@ -43,3 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+function logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('usuario');
+    window.location.reload();
+}

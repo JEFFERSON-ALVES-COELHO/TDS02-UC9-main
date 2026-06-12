@@ -1,6 +1,23 @@
 async function carregarFornecedores() {
     try {
-        const response = await fetch(`${API_BASE_URL}/Fornecedores`);
+        const response = await fetch(`${API_BASE_URL}/Fornecedores`, {
+            method: 'GET',
+            headers: getHeaders()
+        });
+
+        if(response.status === 401) { 
+            // redirecionar para o login, remove o token.
+            alert("Sessão expirada. Faça login novamente.");
+            localStorage.removeItem('token');
+            
+            window.location.href = '../../index.html';
+            return;
+        } else if (response.status == 403) {
+            // alerta em tela, "Não autorizado", redirecionar para o index
+            alert("Acesso negado. Você não tem permissão para acessar esta página.");
+            window.location.href = '../../index.html';
+            return;
+        }
         const fornecedores = await response.json();
         
         const tbody = document.getElementById('tabela-fornecedores');
