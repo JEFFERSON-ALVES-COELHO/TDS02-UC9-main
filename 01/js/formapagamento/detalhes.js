@@ -3,20 +3,40 @@ const id = urlParams.get('id');
 
 async function buscarDetalhes() {
     try {
-        const response = await fetch(`${API_BASE_URL}/FormaPagamento/${id}`);
-        if (!response.ok) throw new Error('Erro ao carregar forma de pagamento');
+
+        if (!id) {
+            throw new Error('ID não informado na URL');
+        }
+
+        const token = localStorage.getItem('token');
+
+        const response = await fetch(`${API_BASE_URL}/FormaPagamento/${id}`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (!response.ok)
+            throw new Error('Erro ao carregar forma de pagamento');
 
         const formaPagamento = await response.json();
 
-        document.getElementById('dados-forma-pagamento').innerHTML = `
+        document.getElementById('dados-formapagamento').innerHTML = `
             <p><strong>ID:</strong> ${formaPagamento.id}</p>
-            <p><strong>Descrição:</strong> ${formaPagamento.descricao}</p>
+            <p><strong>Nome:</strong> ${formaPagamento.nome}</p>
+            <p><strong>Ativo:</strong> ${formaPagamento.ativo ? 'Sim' : 'Não'}</p>
         `;
+
     } catch (error) {
+
         console.error("Erro ao carregar detalhes:", error);
-        document.getElementById('dados-forma-pagamento').innerHTML = `<p style="color: red;">Erro ao carregar detalhes da forma de pagamento.</p>`;
+
+        document.getElementById('dados-formapagamento').innerHTML = `
+            <p style="color:red;">
+                Erro ao carregar detalhes da forma de pagamento.
+            </p>
+        `;
     }
 }
 
 buscarDetalhes();
-

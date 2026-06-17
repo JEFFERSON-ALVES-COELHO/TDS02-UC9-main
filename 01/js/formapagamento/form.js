@@ -1,6 +1,8 @@
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
 
+const form = document.getElementById('form-formapagamento');
+
 async function buscarDetalhes() {
     try {
         const response = await fetch(`${API_BASE_URL}/FormaPagamento/${id}`);
