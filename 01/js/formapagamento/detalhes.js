@@ -8,12 +8,8 @@ async function buscarDetalhes() {
             throw new Error('ID não informado na URL');
         }
 
-        const token = localStorage.getItem('token');
-
         const response = await fetch(`${API_BASE_URL}/FormaPagamento/${id}`, {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
+            headers: getHeaders()
         });
 
         if (!response.ok)

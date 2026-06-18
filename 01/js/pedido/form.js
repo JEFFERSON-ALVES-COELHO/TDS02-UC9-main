@@ -1,6 +1,8 @@
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
 
+const form = document.getElementById('form-pedido');
+
 async function carregarPedido() {
     if (id) {
         document.getElementById('titulo-pagina').innerText = "Editar Pedido";
@@ -42,9 +44,7 @@ form.addEventListener('submit', async (e) => {
     try {
         const response = await fetch(url, {
             method: method,
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: getHeaders(),
             body: JSON.stringify(pedidoDados)
         });
 

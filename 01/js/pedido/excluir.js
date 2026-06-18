@@ -3,7 +3,9 @@ const id = urlParams.get('id');
 
 async function buscarDetalhes() {
     try {
-        const response = await fetch(`${API_BASE_URL}/FormaPagamento/${id}`);
+        const response = await fetch(`${API_BASE_URL}/FormasPagamento/${id}`, {
+            headers: getHeaders()
+        });
         if (!response.ok) throw new Error('Erro ao carregar forma de pagamento');
         const dados = await response.json();
         exibirDetalhes(dados);
@@ -15,8 +17,9 @@ async function buscarDetalhes() {
 
 async function excluirFormaPagamento() {
     try {
-        const response = await fetch(`${API_BASE_URL}/FormaPagamento/${id}`, {
-            method: 'DELETE'
+        const response = await fetch(`${API_BASE_URL}/FormasPagamento/${id}`, {
+            method: 'DELETE',
+            headers: getHeaders()
         });
         if (!response.ok) throw new Error('Erro ao excluir forma de pagamento');
         window.location.href = 'index.html';

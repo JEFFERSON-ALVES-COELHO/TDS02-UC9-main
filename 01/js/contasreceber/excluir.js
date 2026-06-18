@@ -22,7 +22,8 @@ async function buscarDetalhes() {
 document.getElementById('btn-excluir').addEventListener('click', async () => {
     try {
         const response = await fetch(`${API_BASE_URL}/ContasReceber/${id}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: getHeaders()
         });
 
         if (!response.ok) throw new Error('Erro ao excluir conta');

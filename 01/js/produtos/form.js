@@ -61,7 +61,7 @@ form.addEventListener('submit', async (e) => {
     try {
         const response = await fetch(url, {
             method: method,
-            headers: { 'Content-Type': 'application/json' },
+            headers: getHeaders(),
             body: JSON.stringify(produtoDados)
         });
 
